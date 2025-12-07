@@ -44,6 +44,11 @@ fn main() {
         .expect("Error Loading Houses.");
 
     for visit in results_2 {
-        println!("{}, {}", visit.timestamp, visit.yp_voters.unwrap_or(0));
+        println!(
+            "{}, {}, {}",
+            visit.timestamp,
+            visit.id,
+            visit.yp_voters.unwrap_or(-1)
+        );
     }
 }
