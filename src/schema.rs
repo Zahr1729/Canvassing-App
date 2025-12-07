@@ -1,40 +1,40 @@
-// Bespoke Created.
+// @generated automatically by Diesel CLI.
 
 diesel::table! {
-    wards (id) {
-        id -> Serial,
-        ward_name -> VarChar,
-    }
-}
-
-diesel::table! {
-    streets (id) {
-        id -> Serial,
-        ward_id -> Integer,
-        street_name -> VarChar,
+    house_visits (id) {
+        id -> Int4,
+        house_id -> Int4,
+        timestamp -> Timestamp,
+        voter_count -> Nullable<Int4>,
+        yp_voters -> Nullable<Int4>,
+        lab_voters -> Nullable<Int4>,
+        lib_voters -> Nullable<Int4>,
+        con_voters -> Nullable<Int4>,
+        ref_voters -> Nullable<Int4>,
+        grn_voters -> Nullable<Int4>,
     }
 }
 
 diesel::table! {
     houses (id) {
-        id -> Serial,
-        street_id -> Integer,
-        house_number -> VarChar,
+        id -> Int4,
+        street_id -> Int4,
+        house_number -> Varchar,
     }
 }
 
 diesel::table! {
-    house_visits (id) {
-        id -> Serial,
-        house_id -> Integer,
-        timestamp -> Timestamp,
-        voter_count -> Nullable<Integer>,
-        yp_voters -> Nullable<Integer>,
-        lab_voters -> Nullable<Integer>,
-        lib_voters -> Nullable<Integer>,
-        con_voters -> Nullable<Integer>,
-        ref_voters -> Nullable<Integer>,
-        grn_voters -> Nullable<Integer>,
+    streets (id) {
+        id -> Int4,
+        ward_id -> Int4,
+        street_name -> Varchar,
+    }
+}
+
+diesel::table! {
+    wards (id) {
+        id -> Int4,
+        ward_name -> Varchar,
     }
 }
 
