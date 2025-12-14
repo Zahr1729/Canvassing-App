@@ -6,10 +6,12 @@ use self::model::*;
 use diesel::prelude::*;
 use diesel::{Connection, PgConnection};
 use dotenvy::dotenv;
+use load_database::read_onspd;
 use schema::house_visits::dsl::*;
 use schema::houses::dsl::*;
 
 mod api;
+mod load_database;
 mod model;
 mod schema;
 mod setup_data;
@@ -22,7 +24,7 @@ pub fn establish_connection() -> PgConnection {
         .unwrap_or_else(|_| panic!("Error connecting to {}", database_url))
 }
 
-fn main() {
+fn debug() {
     let connection = &mut establish_connection();
 
     setup_data(connection);
@@ -51,4 +53,8 @@ fn main() {
             visit.yp_voters.unwrap_or(-1)
         );
     }
+}
+
+fn main() {
+    read_onspd();
 }
